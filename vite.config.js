@@ -1,11 +1,17 @@
-import { sveltekit } from '@sveltejs/kit/vite';
+import { sveltekit } from '@sveltejs/kit/vite'
 
 /** @type {import('vite').UserConfig} */
 const config = {
-	plugins: [sveltekit()],
-	test: {
-		include: ['src/**/*.{test,spec}.{js,ts}']
-	}
-};
+  plugins: [sveltekit()],
+  resolve: {
+    alias: {
+			$routes: '/src/routes',
+      $components: '/src/routes/components',
+      $assets: '/src/assets',
+			$resources: '/src/resources/css',
+      $lib: '/src/routes/lib'
+    },
+  },
+}
 
-export default config;
+export default config
