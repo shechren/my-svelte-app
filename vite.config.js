@@ -7,7 +7,7 @@ const config = {
     alias: {
 			$routes: '/src/routes',
       $components: '/src/routes/components',
-      $assets: '/src/assets',
+      $assets: '/src/routes/assets',
 			$resources: '/src/resources/css',
       $lib: '/src/routes/lib'
     },

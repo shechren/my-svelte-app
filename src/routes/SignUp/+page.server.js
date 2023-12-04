@@ -1,46 +1,40 @@
 import { createPool } from 'mariadb';
 import query from '$routes/sql';
 
-export const actions = {
-  default: async (event) => {
-    try {
-      const body = await event.request.formData();
-      const data = Object.fromEntries(body)
-      
-      const pool = createPool({
-        host: 'localhost',
-        user: 'root',
-        password: 'test1234',
-        port: 5000,
-        database: 'svelte_service'
-      });
-      const connection = await pool.getConnection();
+export const actions = 
+ { create: async ({request}) => {
+  try {
+    const body = await request.formData();
+    const email = body.get('email')
+    const password = body.get('password')
 
-    try {
-      await connection.beginTransaction();
-      await pool.query(query.createDatabase);
-      await pool.query(query.useDatabase);
-      await pool.query(query.createAccountTable);
-      await pool.query(query.insertAccount, [[data.email], [data.password]]);
-      await connection.commit();
-    } catch (error) {
-      await connection.rollback();
-      console.error(error);
-    } finally {
-      await connection.release();
-      await pool.end();
-    }
-      return {
-        status: 200,
-        body: { message: 'Successfully processed the request.' },
-      };
-    } catch (error) {
-      console.error('Error in post action:', error);
+    const pool = createPool({
+      host: 'localhost',
+      user: 'root',
+      password: 'test1234',
+      port: 5000,
+      database: 'svelte_service'
+    });
+    const connection = await pool.getConnection();
 
-      return {
-        status: 500,
-        body: { message: 'Internal server error.' },
-      };
-    }
+  try {
+    await connection.beginTransaction();
+    await pool.query(query.createDatabase);
+    await pool.query(query.useDatabase);
+    await pool.query(query.createAccountTable);
+    await pool.query(query.insertAccount, [[email], [password]]);
+    await connection.commit();
+  } catch (error) {
+    await connection.rollback();
+    throw new Error(error)
+  } finally {
+    await connection.release();
+    await pool.end();
   }
-}
+    return {
+      success: true
+    }}
+    catch (err) {
+    return err
+  }
+}}

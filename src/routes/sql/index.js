@@ -16,6 +16,21 @@ export default {
   insertAccount: "INSERT INTO account_table\
     (user_email, user_password)\
     VALUES (?, ?)",
-  deleteAccount: "DELETE FROM account_table WHERE user_email = ?"
+  deleteAccount: "DELETE FROM account_table WHERE user_email = '?'",
+
+  searchAccount_1: "SELECT * FROM account_table WHERE user_email = ? AND user_password = ?;",
+
+  createPostingTable: "CREATE TALE IF NOT EXISTS posting_table (\
+    id INT PRIMARY KEY AUTO_INCREMENT,\
+    user_email VARCHAR(30) NOT NULL,\
+    title TEXT NOT NULL,\
+    datetime DATETIME DEFAULT UTC_TIMESTAMP(),\
+    description TEXT NOT NULL\
+    );",
+
+  insertPosting: "INSERT INTO posting_table\
+  (user_email, title, description) VALUES (?, ?, ?)",
+
+  deletePosting: "DELETE FROM posting_table WHERE id = '?'"
 }
 
