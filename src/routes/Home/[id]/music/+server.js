@@ -1,7 +1,7 @@
 import { createPool } from 'mariadb';
 import query from '$routes/sql';
 
-export const GET = async ({request}) => {
+export const GET = async () => {
   try {
     const pool = createPool({
     host: 'localhost',
@@ -13,11 +13,10 @@ export const GET = async ({request}) => {
 
   const connection = await pool.getConnection();
   await connection.query(query.useDatabase)
-  const result = await connection.query(query.selectPosting, ['coding']);
+  const result = await connection.query(query.selectPosting, ['music']);
   await connection.release();
   await pool.end();
   if (result) {
-    const data = JSON.stringify(result);
     return new Response(JSON.stringify(result));
   } else {
     return new Response(JSON.stringify({status: 401}))

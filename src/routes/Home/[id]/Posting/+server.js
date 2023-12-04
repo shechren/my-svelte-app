@@ -20,7 +20,7 @@ export const POST = async ({request}) => {
   await connection.query(query.createDatabase);
   await connection.query(query.useDatabase);
   await connection.query(query.createPostingTable);
-  const [result] = await connection.query(query.insertPosting, [[category], [fullEmail], [password], [title], [description]]);
+  const result = await connection.query(query.insertPosting, [[category], [fullEmail], [password], [title], [description]]);
   await connection.release();
   await pool.end();
 

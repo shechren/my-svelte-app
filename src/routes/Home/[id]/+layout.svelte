@@ -27,10 +27,9 @@ let user_id = $page.params.id
         </div>
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
-            <a href={`/Home/${user_id}/Cards`} class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">스노우의 일기장</a>
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">코딩</a>
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">음악</a>
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">일정</a>
+            <a href={`/Home/${user_id}`} class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">스노우의 일기장</a>
+            <a href={`/Home/${user_id}/coding`} class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">코딩</a>
+            <a href={`/Home/${user_id}/music`} class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">음악</a>
           </div>
         </div>
       </div>
@@ -49,11 +48,11 @@ let user_id = $page.params.id
               <Fa icon={faCog} fw style="color: mistyrose" />
             </button>
           </div>
-          <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none collapse" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+          <!-- <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none collapse" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -61,10 +60,9 @@ let user_id = $page.params.id
 
   <div class="sm:hidden" id="mobile-menu">
     <div class="space-y-1 px-2 pb-3 pt-2">
-      <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">스노우의 일기장</a>
-      <a href="{`/Home/${user_id}/Cards`}" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">코딩</a>
-      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">음악</a>
-      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">일정</a>
+      <a href="{`/Home/${user_id}/`}" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">스노우의 일기장</a>
+      <a href="{`/Home/${user_id}/coding]`}" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">코딩</a>
+      <a href="{`/Home/${user_id}/music]`}" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">음악</a>
     </div>
   </div>
 </nav>
