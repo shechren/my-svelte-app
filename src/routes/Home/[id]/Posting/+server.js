@@ -3,12 +3,10 @@ import query from '$routes/sql';
 
 export const POST = async ({request}) => {
   const body = await request.json()
-  const { title, description, id } = body;
-  const [email, domain, password] = id.split('-');
+  const { category, title, description, user_id } = body;
+  const [email, domain, password] = user_id.split('-');
 
   const fullEmail = `${email}@${domain}.com`;
-  console.log(fullEmail)
-  console.log(password)
 
   const pool = createPool({
     host: 'localhost',
@@ -22,8 +20,13 @@ export const POST = async ({request}) => {
   await connection.query(query.createDatabase);
   await connection.query(query.useDatabase);
   await connection.query(query.createPostingTable);
-  const [result] = await connection.query(query.insertPosting, [, description]);
+  const [result] = await connection.query(query.insertPosting, [[category], [fullEmail], [password], [title], [description]]);
   await connection.release();
   await pool.end();
 
+  if (result.length > 0) {
+    return new Response(JSON.stringify({status: 200}))
+  } else {
+    return new Response(JSON.stringify({status: 401}))
+  }
 }

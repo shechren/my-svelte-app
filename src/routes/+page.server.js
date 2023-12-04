@@ -9,7 +9,7 @@ export const actions =
     const password = body.get('password')
     let result = ''
 
-    let addressEmail = email.replace('@', '?');
+    let addressEmail = email.replace('@', '-');
 
     addressEmail = addressEmail.replace('.com', '');
 
@@ -37,12 +37,7 @@ export const actions =
     }
 
   
-    if (email==='test' && password==='test1234') {
-      return {
-        type: 'success',
-        code: 'owner' + '-' + addressEmail + '-' + password
-      }
-    } else if (result.length > 0) {
+    if (result.length > 0) {
       return {
         type: 'success',
         code: addressEmail + '-' + password

@@ -11,10 +11,8 @@
   const signIn = ({ form }) => {
   return async ({ result, update }) => {
     let code = '';
-
-    if (result.data && result.data.role === 'owner') {
-      code = result.data.code;
-    } else if (result.data && result.data.type === 'success') {
+    
+    if (result.data && result.data.type === 'success') {
       code = result.data.code;
     } else if (result.data && result.data.type === 'invalid') {
       message = '잘못된 정보입니다.';
