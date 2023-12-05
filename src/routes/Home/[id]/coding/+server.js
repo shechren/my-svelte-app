@@ -2,7 +2,6 @@ import { createPool } from 'mariadb';
 import query from '$routes/sql';
 
 export const GET = async () => {
-  console.log("check")
   try {
     const pool = createPool({
     host: 'localhost',
