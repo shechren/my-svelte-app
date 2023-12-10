@@ -19,7 +19,6 @@ export const actions = {
     await connection.release();
     await pool.end();
 
-    console.log(result)
     if (result.length > 0) {
       return new Response(JSON.stringify({status: 200}))
     } else {

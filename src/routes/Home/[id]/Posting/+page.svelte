@@ -2,13 +2,12 @@
   import '$resources/app.css'
   import { page } from '$app/stores'
 
-  let title = '';
-  let desc = '';
-  let user_id = '';
-  let category = '';
+  let title = "";
+  let desc = "";
+  let user_id = "";
+  let category = "";
 
   const handler = async () => {
-    await console.log(category)
     user_id = $page.params.id
     const response = await fetch(`/Home/${user_id}/Posting/`, {
       method: "POST", 

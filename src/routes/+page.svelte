@@ -1,8 +1,7 @@
 <script>
   import '$resources/app.css'
   import { enhance } from '$app/forms'
-  import { goto } from '$app/navigation';
-  import { page } from '$app/stores' 
+  import { goto } from '$app/navigation'; 
 
   export let form;
   
@@ -11,7 +10,7 @@
   const signIn = ({ form }) => {
   return async ({ result, update }) => {
     let code = '';
-    
+
     if (result.data && result.data.type === 'success') {
       code = result.data.code;
     } else if (result.data && result.data.type === 'invalid') {
